@@ -11,4 +11,9 @@ app.config(function ($routeProvider) {
         templateUrl: '/templates/admin/user/update.html',
         controller: 'UpdateUserController',
     });
+
+    $routeProvider.when('/create-user', {
+        templateUrl: '/templates/admin/user/create.html',
+        controller: 'CreateUserController',
+    });
 });

@@ -34,7 +34,6 @@ app.controller('UpdateUserController', function ($scope, $routeParams, $http) {
             ...user,
             roles: [user.roles],
         };
-        console.log(user);
         $http
             .put('http://127.0.0.1:3009/api/v1/user/', user, {
                 headers: headers,
@@ -43,5 +42,9 @@ app.controller('UpdateUserController', function ($scope, $routeParams, $http) {
                 Swal.fire('Update successfuly!', '', 'success');
                 window.location.href = '#!/list-user';
             });
+    };
+
+    $scope.back = () => {
+        window.location.href = '#!/list-user';
     };
 });
