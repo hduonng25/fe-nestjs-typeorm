@@ -31,7 +31,14 @@
             <tr ng-repeat="user in listUser">
                 <td>{{$index + 1}}</td>
                 <td>{{ user.id }}</td>
-                <td></td>
+                <td>
+                    <img
+                        ng-src="http://127.0.0.1:3009/{{user.avatar}}"
+                        width="90px"
+                        height="100px"
+                        alt="avatar"
+                    />
+                </td>
                 <td>{{ user.full_name}}</td>
                 <td>{{ user.email }}</td>
                 <td>

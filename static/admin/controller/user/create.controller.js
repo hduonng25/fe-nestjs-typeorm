@@ -1,7 +1,28 @@
-app.controller('UpdateUserController', function ($scope, $routeParams, $http) {
+app.controller('CreateUserController', function ($scope, $routeParams, $http) {
     let token = localStorage.getItem('token');
     let headers = {
         'Content-Type': 'application/json',
         token: token,
+    };
+
+    $scope.create = (create_user) => {
+        let data = {
+            ...create_user,
+            full_name: create_user.first_name + ' ' + create_user.last_name,
+            roles: [create_user.roles],
+        };
+
+        $http
+            .post('http://127.0.0.1:3009/api/v1/user/', data, {
+                headers: headers,
+            })
+            .then(function (response) {
+                Swal.fire('Create successfuly!', '', 'success');
+                window.location.href = '#!/list-user';
+            });
+    };
+
+    $scope.back = () => {
+        window.location.href = '#!/list-user';
     };
 });

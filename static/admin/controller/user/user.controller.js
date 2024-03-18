@@ -4,6 +4,7 @@ app.controller('UserController', function ($scope, $http) {
         'Content-Type': 'application/json',
         token: token,
     };
+
     function parseJwt(token) {
         let base64Url = token.split('.')[1];
         let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
@@ -19,6 +20,7 @@ app.controller('UserController', function ($scope, $http) {
         let payload = JSON.parse(jsonPayload);
         return payload;
     }
+
     let decodedToken = parseJwt(token);
 
     $http
