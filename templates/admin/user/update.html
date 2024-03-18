@@ -1,0 +1,66 @@
+<div class="container-fluid" ng-controller="UpdateUserController">
+    <div class="card mb-4">
+        <div class="card-header">Update user</div>
+        <div class="card-body">
+            <form>
+                <div class="row gx-3 mb-3">
+                    <div class="col-md-6">
+                        <label class="small mb-1" for="inputUsername">First name</label>
+                        <input
+                            class="form-control"
+                            id="inputUsername"
+                            type="text"
+                            placeholder="First name"
+                            ng-model="user.first_name"
+                        />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="small mb-1" for="inputLocation">Last name</label>
+                        <input
+                            class="form-control"
+                            id="inputLocation"
+                            type="text"
+                            placeholder="Last name"
+                            ng-model="user.last_name"
+                        />
+                    </div>
+                </div>
+                <div class="row gx-3 mb-3">
+                    <div class="col-md-6">
+                        <label class="small mb-1" for="inputFirstName">Email</label>
+                        <input
+                            class="form-control"
+                            id="inputFirstName"
+                            type="text"
+                            placeholder="Email"
+                            ng-model="user.email"
+                        />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="small mb-1" for="inputLastName">Age</label>
+                        <input
+                            class="form-control"
+                            id="inputLastName"
+                            type="text"
+                            placeholder="Age"
+                            ng-model="user.age"
+                        />
+                    </div>
+                </div>
+
+                <div style="float: right">
+                    <button class="btn btn-primary" type="button" ng-click="returnEdit()">
+                        Return
+                    </button>
+                    <button
+                        class="btn btn-primary"
+                        type="button"
+                        ng-click="saveUpdate(user)"
+                    >
+                        Save
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
