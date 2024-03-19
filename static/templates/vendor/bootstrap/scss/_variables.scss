@@ -99,13 +99,7 @@ $yiq-text-dark: $gray-900 !default;
 $yiq-text-light: $white !default;
 
 // Characters which are escaped by the escape-svg function
-$escaped-characters: (
-    ('<', '%3c'),
-    ('>', '%3e'),
-    ('#', '%23'),
-    ('(', '%28'),
-    (')', '%29')
-) !default;
+$escaped-characters: (('<', '%3c'), ('>', '%3e'), ('#', '%23'), ('(', '%28'), (')', '%29')) !default;
 
 // Options
 //
@@ -259,21 +253,16 @@ $transition-fade: opacity 0.15s linear !default;
 $transition-collapse: height 0.35s ease !default;
 
 $embed-responsive-aspect-ratios: () !default;
-$embed-responsive-aspect-ratios: join(
-    ((21 9), (16 9), (4 3), (1 1)),
-    $embed-responsive-aspect-ratios
-);
+$embed-responsive-aspect-ratios: join(((21 9), (16 9), (4 3), (1 1)), $embed-responsive-aspect-ratios);
 
 // Typography
 //
 // Font, line-height, and color for body text, headings, and more.
 
 // stylelint-disable value-keyword-case
-$font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif,
-    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' !default;
-$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
-    'Courier New', monospace !default;
+$font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' !default;
+$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace !default;
 $font-family-base: $font-family-sans-serif !default;
 // stylelint-enable value-keyword-case
 
@@ -495,23 +484,11 @@ $input-height-border: $input-border-width * 2 !default;
 
 $input-height-inner: add($input-line-height * 1em, $input-padding-y * 2) !default;
 $input-height-inner-half: add($input-line-height * 0.5em, $input-padding-y) !default;
-$input-height-inner-quarter: add(
-    $input-line-height * 0.25em,
-    $input-padding-y / 2
-) !default;
+$input-height-inner-quarter: add($input-line-height * 0.25em, $input-padding-y / 2) !default;
 
-$input-height: add(
-    $input-line-height * 1em,
-    add($input-padding-y * 2, $input-height-border, false)
-) !default;
-$input-height-sm: add(
-    $input-line-height-sm * 1em,
-    add($input-padding-y-sm * 2, $input-height-border, false)
-) !default;
-$input-height-lg: add(
-    $input-line-height-lg * 1em,
-    add($input-padding-y-lg * 2, $input-height-border, false)
-) !default;
+$input-height: add($input-line-height * 1em, add($input-padding-y * 2, $input-height-border, false)) !default;
+$input-height-sm: add($input-line-height-sm * 1em, add($input-padding-y-sm * 2, $input-height-border, false)) !default;
+$input-height-lg: add($input-line-height-lg * 1em, add($input-padding-y-lg * 2, $input-height-border, false)) !default;
 
 $input-transition:
     border-color 0.15s ease-in-out,
@@ -603,16 +580,14 @@ $custom-select-disabled-bg: $gray-200 !default;
 $custom-select-bg-size: 8px 10px !default; // In pixels because image dimensions
 $custom-select-indicator-color: $gray-800 !default;
 $custom-select-indicator: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'><path fill='#{$custom-select-indicator-color}' d='M2 0L0 2h4zm0 5L0 3h4z'/></svg>") !default;
-$custom-select-background: escape-svg($custom-select-indicator) right
-    $custom-select-padding-x center / $custom-select-bg-size no-repeat !default; // Used so we can have multiple background elements (e.g., arrow and feedback icon)
+$custom-select-background: escape-svg($custom-select-indicator) right $custom-select-padding-x center /
+    $custom-select-bg-size no-repeat !default; // Used so we can have multiple background elements (e.g., arrow and feedback icon)
 
 $custom-select-feedback-icon-padding-right: add(
     1em * 0.75,
-    (2 * $custom-select-padding-y * 0.75) + $custom-select-padding-x +
-        $custom-select-indicator-padding
+    (2 * $custom-select-padding-y * 0.75) + $custom-select-padding-x + $custom-select-indicator-padding
 ) !default;
-$custom-select-feedback-icon-position: center right
-    ($custom-select-padding-x + $custom-select-indicator-padding) !default;
+$custom-select-feedback-icon-position: center right ($custom-select-padding-x + $custom-select-indicator-padding) !default;
 $custom-select-feedback-icon-size: $input-height-inner-half $input-height-inner-half !default;
 
 $custom-select-border-width: $input-border-width !default;
@@ -791,10 +766,7 @@ $dropdown-bg: $white !default;
 $dropdown-border-color: rgba($black, 0.15) !default;
 $dropdown-border-radius: $border-radius !default;
 $dropdown-border-width: $border-width !default;
-$dropdown-inner-border-radius: subtract(
-    $dropdown-border-radius,
-    $dropdown-border-width
-) !default;
+$dropdown-inner-border-radius: subtract($dropdown-border-radius, $dropdown-border-width) !default;
 $dropdown-divider-bg: $gray-200 !default;
 $dropdown-divider-margin-y: $nav-divider-margin-y !default;
 $dropdown-box-shadow: 0 0.5rem 1rem rgba($black, 0.175) !default;
@@ -908,10 +880,7 @@ $popover-max-width: 276px !default;
 $popover-border-width: $border-width !default;
 $popover-border-color: rgba($black, 0.2) !default;
 $popover-border-radius: $border-radius-lg !default;
-$popover-inner-border-radius: subtract(
-    $popover-border-radius,
-    $popover-border-width
-) !default;
+$popover-inner-border-radius: subtract($popover-border-radius, $popover-border-width) !default;
 $popover-box-shadow: 0 0.25rem 0.5rem rgba($black, 0.2) !default;
 
 $popover-header-bg: darken($popover-bg, 3%) !default;
@@ -980,10 +949,7 @@ $modal-content-bg: $white !default;
 $modal-content-border-color: rgba($black, 0.2) !default;
 $modal-content-border-width: $border-width !default;
 $modal-content-border-radius: $border-radius-lg !default;
-$modal-content-inner-border-radius: subtract(
-    $modal-content-border-radius,
-    $modal-content-border-width
-) !default;
+$modal-content-inner-border-radius: subtract($modal-content-border-radius, $modal-content-border-width) !default;
 $modal-content-box-shadow-xs: 0 0.25rem 0.5rem rgba($black, 0.5) !default;
 $modal-content-box-shadow-sm-up: 0 0.5rem 1rem rgba($black, 0.5) !default;
 
@@ -1149,8 +1115,7 @@ $pre-scrollable-max-height: 340px !default;
 
 // Utilities
 
-$displays: none, inline, inline-block, block, table, table-row, table-cell, flex,
-    inline-flex !default;
+$displays: none, inline, inline-block, block, table, table-row, table-cell, flex, inline-flex !default;
 $overflows: auto, hidden !default;
 $positions: static, relative, absolute, fixed, sticky !default;
 $user-selects: all, auto, none !default;

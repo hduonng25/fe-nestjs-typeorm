@@ -59,14 +59,7 @@
     });
 
     /* Bootstrap paging button renderer */
-    DataTable.ext.renderer.pageButton.bootstrap = function (
-        settings,
-        host,
-        idx,
-        buttons,
-        page,
-        pages,
-    ) {
+    DataTable.ext.renderer.pageButton.bootstrap = function (settings, host, idx, buttons, page, pages) {
         var api = new DataTable.Api(settings);
         var classes = settings.oClasses;
         var lang = settings.oLanguage.oPaginate;
@@ -79,10 +72,7 @@
             var i, ien, node, button;
             var clickHandler = function (e) {
                 e.preventDefault();
-                if (
-                    !$(e.currentTarget).hasClass('disabled') &&
-                    api.page() != e.data.action
-                ) {
+                if (!$(e.currentTarget).hasClass('disabled') && api.page() != e.data.action) {
                     api.page(e.data.action).draw('page');
                 }
             };
@@ -131,10 +121,7 @@
                     if (btnDisplay) {
                         node = $('<li>', {
                             class: classes.sPageButton + ' ' + btnClass,
-                            id:
-                                idx === 0 && typeof button === 'string'
-                                    ? settings.sTableId + '_' + button
-                                    : null,
+                            id: idx === 0 && typeof button === 'string' ? settings.sTableId + '_' + button : null,
                         })
                             .append(
                                 $('<a>', {
@@ -148,11 +135,7 @@
                             )
                             .appendTo(container);
 
-                        settings.oApi._fnBindAction(
-                            node,
-                            { action: button },
-                            clickHandler,
-                        );
+                        settings.oApi._fnBindAction(node, { action: button }, clickHandler);
 
                         counter++;
                     }

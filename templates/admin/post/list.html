@@ -1,7 +1,7 @@
-<div ng-controller="UserController" id="UserList">
+<div ng-controller="PostController" id="UserList">
     <div class="container-fluid my-auto d-flex align-items-center">
         <div class="mx-auto">
-            <h1>User</h1>
+            <h1>Post</h1>
         </div>
     </div>
     <div class="d-flex">
@@ -18,12 +18,11 @@
     <br />
     <table class="table align-middle mb-1 bg-white">
         <thead class="bg-light">
-            <tr>
+            <tr style="text-align: center">
                 <th>#</th>
-                <th>ID</th>
-                <th>Avatar</th>
-                <th>Full name</th>
-                <th>Email</th>
+                <th>User</th>
+                <th>Date</th>
+                <th>Category</th>
                 <th></th>
             </tr>
         </thead>
@@ -32,7 +31,7 @@
                 <td>{{$index + 1}}</td>
                 <td>{{ user.id }}</td>
                 <td>
-                    <img ng-src="http://127.0.0.1:3009/{{user.avatar}}" width="90px" height="100px" alt="avatar" />
+                    
                 </td>
                 <td>{{ user.full_name}}</td>
                 <td>{{ user.email }}</td>
