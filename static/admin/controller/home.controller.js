@@ -33,4 +33,14 @@ app.config(function ($routeProvider) {
         templateUrl: '/templates/admin/post/list.html',
         controller: 'PostController',
     });
+
+    $routeProvider.when('/create-post', {
+        templateUrl: '/templates/admin/post/create.html',
+        controller: 'CreatePostController',
+    });
+
+    $routeProvider.when('/update-post', {
+        templateUrl: '/templates/admin/post/update.html',
+        controller: 'UpdatePostController',
+    });
 });
