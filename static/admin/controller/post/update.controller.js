@@ -1,4 +1,6 @@
-app.controller('ProfileUserController', function ($scope, $routeParams, $http, parseJwt) {
+app.controller('UpdatePostController', function ($scope, $http, $routeParams, parseJwt) {
+    const post_id = $routeParams.id;
+
     let token = localStorage.getItem('token');
     let headers = {
         'Content-Type': 'application/json',
@@ -8,13 +10,13 @@ app.controller('ProfileUserController', function ($scope, $routeParams, $http, p
     let payload = parseJwt.decodeToken(token);
 
     $http
-        .get(`http://127.0.0.1:3009/api/v1/user/id=${payload.id}`, {
+        .get(`http://127.0.0.1:3009/api/v1/post/id=${post_id}`, {
             headers: headers,
         })
         .then(function (response) {
-            const user = response.data;
-            $scope.avatarSrc = `http://127.0.0.1:3009/${user.avatar}`;
-            $scope.user = user;
+            const post = response.data;
+            $scope.avatarSrc = `http://127.0.0.1:3009/${post.thumbnail}`;
+            $scope.post = post;
         })
         .catch(function (error) {
             Swal.fire({
@@ -29,20 +31,26 @@ app.controller('ProfileUserController', function ($scope, $routeParams, $http, p
             });
         });
 
-    $scope.change = (user) => {
-        const check = payload.roles.some((roles) => roles.includes('ADMIN'));
-        if (!check) {
+    $http
+        .get('http://127.0.0.1:3009/api/v1/category/?page=1&size=20', {
+            headers: headers,
+        })
+        .then(function (response) {
+            const list_category = response.data.data.result;
+            $scope.list_category = list_category;
+        })
+        .catch(function (error) {
             Swal.fire({
-                icon: 'warning',
-                title: 'You do not have permission to operate',
+                icon: 'error',
+                title: 'No token',
                 showConfirmButton: false,
                 timer: 2000,
+            }).then(function () {
+                setTimeout(function () {
+                    window.location.href = 'http://127.0.0.1:5500/templates/admin/auth/login.html';
+                }, 2000);
             });
-            return;
-        }
-        let user_id = user.id;
-        window.location.href = '#!/update-user?id=' + user_id;
-    };
+        });
 
     $scope.file = '';
 
@@ -64,12 +72,16 @@ app.controller('ProfileUserController', function ($scope, $routeParams, $http, p
         inputFile.click();
     };
 
-    $scope.avatar = () => {
+    $scope.save = (post) => {
         let formData = new FormData();
-        formData.append('avatar', $scope.file);
+
+        formData.append('id', post.id);
+        formData.append('thumbnail', $scope.file);
+        formData.append('content', post.content);
+        formData.append('category_id', post.category);
 
         $http
-            .post('http://127.0.0.1:3009/api/v1/user/upload-avatar', formData, {
+            .put('http://127.0.0.1:3009/api/v1/post/', formData, {
                 transformRequest: angular.identity,
                 headers: {
                     'Content-Type': undefined,
@@ -77,8 +89,8 @@ app.controller('ProfileUserController', function ($scope, $routeParams, $http, p
                 },
             })
             .then(function (response) {
-                Swal.fire('Set avatar successfuly!', '', 'success');
-                window.location.href = '#!/list-user';
+                Swal.fire('Create successfuly!', '', 'success');
+                window.location.href = '#!/list-post';
             })
             .catch(function (error) {
                 console.log(error.data.message);

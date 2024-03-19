@@ -64,7 +64,7 @@ app.controller('LoginController', function ($scope, $http) {
                 } else {
                     Swal.fire({
                         icon: 'warning',
-                        title: error.data.message,
+                        title: error.data.mess,
                         showConfirmButton: false,
                         timer: 2000,
                     }).then(function () {
