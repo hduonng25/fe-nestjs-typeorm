@@ -30,9 +30,7 @@ app.controller('LoginController', function ($scope, $http) {
                         atob(base64)
                             .split('')
                             .map(function (c) {
-                                return (
-                                    '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
-                                );
+                                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
                             })
                             .join(''),
                     );
@@ -48,11 +46,9 @@ app.controller('LoginController', function ($scope, $http) {
                     decodedToken.roles.some((role) => role.includes('ADMIN')) ||
                     decodedToken.roles.some((role) => role.includes('STAFF'))
                 ) {
-                    window.location.href =
-                        'http://127.0.0.1:5500/templates/admin/index.html';
+                    window.location.href = 'http://127.0.0.1:5500/templates/admin/index.html';
                 } else {
-                    window.location.href =
-                        'http://127.0.0.1:5501/templates/customer/home/index.html#!/';
+                    window.location.href = 'http://127.0.0.1:5501/templates/customer/home/index.html#!/';
                 }
             })
             .catch(function (error) {
@@ -82,7 +78,6 @@ app.controller('LoginController', function ($scope, $http) {
         window.location.href = 'http://127.0.0.1:5501/templates/auth/Register.html#!/';
     };
     $scope.quenMatKhau = function () {
-        window.location.href =
-            'http://127.0.0.1:5501/templates/auth/ForgotPassword.html#!/';
+        window.location.href = 'http://127.0.0.1:5501/templates/auth/ForgotPassword.html#!/';
     };
 });

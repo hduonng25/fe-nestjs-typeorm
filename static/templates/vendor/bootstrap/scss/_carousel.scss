@@ -115,11 +115,7 @@
 .carousel-control-next {
     right: 0;
     @if $enable-gradients {
-        background-image: linear-gradient(
-            270deg,
-            rgba($black, 0.25),
-            rgba($black, 0.001)
-        );
+        background-image: linear-gradient(270deg, rgba($black, 0.25), rgba($black, 0.001));
     }
 }
 

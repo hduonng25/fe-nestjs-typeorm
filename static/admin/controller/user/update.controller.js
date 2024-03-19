@@ -23,8 +23,7 @@ app.controller('UpdateUserController', function ($scope, $routeParams, $http) {
                 timer: 2000,
             }).then(function () {
                 setTimeout(function () {
-                    window.location.href =
-                        'http://127.0.0.1:5500/templates/admin/auth/login.html';
+                    window.location.href = 'http://127.0.0.1:5500/templates/admin/auth/login.html';
                 }, 2000);
             });
         });

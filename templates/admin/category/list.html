@@ -1,7 +1,7 @@
-<div ng-controller="UserController" id="UserList">
+<div ng-controller="CategoryController" id="UserList">
     <div class="container-fluid my-auto d-flex align-items-center">
         <div class="mx-auto">
-            <h1>User</h1>
+            <h1>Category</h1>
         </div>
     </div>
     <div class="d-flex">
@@ -14,6 +14,17 @@
         >
             <span> <i class="fas fa-sync-alt"></i></span>
         </button>
+
+        <button
+            style="margin-left: 10px"
+            type="button"
+            class="dt-button buttons-html5 btn btn-white btn-success btn-bold"
+            data-toggle="tooltip"
+            title="Tải lại dữ liệu"
+            ng-click="create_category()"
+        >
+            <span> <i class="fas fa-plus"></i></span>
+        </button>
     </div>
     <br />
     <table class="table align-middle mb-1 bg-white">
@@ -21,27 +32,21 @@
             <tr>
                 <th>#</th>
                 <th>ID</th>
-                <th>Avatar</th>
-                <th>Full name</th>
-                <th>Email</th>
+                <th>Name</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="user in listUser">
+            <tr ng-repeat="category in list_category">
                 <td>{{$index + 1}}</td>
-                <td>{{ user.id }}</td>
-                <td>
-                    <img ng-src="http://127.0.0.1:3009/{{user.avatar}}" width="90px" height="100px" alt="avatar" />
-                </td>
-                <td>{{ user.full_name}}</td>
-                <td>{{ user.email }}</td>
+                <td>{{ category.id}}</td>
+                <td>{{ category.name}}</td>
                 <td>
                     <div class="button-group">
                         <button
                             type="button"
                             class="dt-button buttons-html5 btn btn-white btn-success btn-bold"
-                            ng-click="updateUser(user)"
+                            ng-click="updateCategory(category)"
                         >
                             <i class="bx bx-edit me-2"></i>
                         </button>
@@ -49,7 +54,7 @@
                         <button
                             type="button"
                             class="dt-button buttons-html5 btn btn-white btn-success btn-bold"
-                            ng-click="deleted(user)"
+                            ng-click="deleted(category)"
                         >
                             <i class="bx bx-trash me-2"></i>
                         </button>
@@ -58,9 +63,4 @@
             </tr>
         </tbody>
     </table>
-    <div class="card-footer text-center">
-        <button class="btn" ng-repeat="pageNumber in pager.pageNumbers" ng-click="pager.page = pageNumber">
-            {{pageNumber}}
-        </button>
-    </div>
 </div>

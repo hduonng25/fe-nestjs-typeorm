@@ -3,22 +3,18 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-        />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
 
         <title>SB Admin 2 - Dashboard</title>
+
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular-route.js"></script>
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-        />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
         <script src="https://cdn.jsdelivr.net/npm/sweetalert@2/dist/sweetalert.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
             rel="stylesheet"
@@ -26,14 +22,8 @@
             crossorigin="anonymous"
         />
         <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-        />
-        <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/boxicons@2.1.0/css/boxicons.min.css"
-        />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.1.0/css/boxicons.min.css" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.6/ui-bootstrap-tpls.min.js"></script>
 
         <script
@@ -43,16 +33,8 @@
         ></script>
 
         <!-- Custom fonts for this template-->
-        <link
-            href="../../static/templates/vendor/fontawesome-free/css/all.min.css"
-            rel="stylesheet"
-            type="text/css"
-        />
-        <link
-            href="../../static/templates/vendor/fontawesome-free/css/all.min.css"
-            rel="stylesheet"
-            type="text/css"
-        />
+        <link href="../../static/templates/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
+        <link href="../../static/templates/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
         <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet"
@@ -66,25 +48,31 @@
 
         <link href="../../static/templates/css/sb-admin-2.min.css" rel="stylesheet" />
 
+        <!-- User -->
         <script src="../../static/admin/controller/home.controller.js"></script>
         <script src="../../static/admin/controller/user/user.controller.js"></script>
         <script src="../../static/admin/controller/user/update.controller.js"></script>
         <script src="../../static/admin/controller/user/create.controller.js"></script>
+        <script src="../../static/admin/controller/user/profile.controller.js"></script>
+
+        <!-- Auth -->
+        <script src="../../static/admin/module/payload.js"></script>
+        <script src="../../static/auth/logout.controller.js"></script>
+
+        <!-- Category -->
+        <script src="../../static/admin/controller/category/category.controller.js"></script>
+
+        <!-- Post -->
+        <script src="../../static/admin/controller/post/post.controller.js"></script>
     </head>
 
     <body id="page-top">
         <!-- Page Wrapper -->
         <div id="wrapper">
             <!-- Sidebar -->
-            <ul
-                class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
-                id="accordionSidebar"
-            >
+            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
                 <!-- Sidebar - Brand -->
-                <a
-                    class="sidebar-brand d-flex align-items-center justify-content-center"
-                    href="index.html"
-                >
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                     <div class="sidebar-brand-icon rotate-n-15">
                         <i class="fas fa-laugh-wink"></i>
                     </div>
@@ -98,23 +86,17 @@
                     <a
                         class="nav-link collapsed"
                         data-toggle="collapse"
-                        data-target="#Staff"
+                        data-target="#Category"
                         aria-expanded="true"
-                        aria-controls="Staff"
+                        aria-controls="Category"
                     >
                         <i class="fas fa-fw fa-folder"></i>
-                        <span>Staff</span>
+                        <span>Category</span>
                     </a>
-                    <div
-                        id="Staff"
-                        class="collapse"
-                        aria-labelledby="headingPages"
-                        data-parent="#accordionSidebar"
-                    >
+                    <div id="Category" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Manage Staff</h6>
-                            <a class="collapse-item" href="login.html">List</a>
-                            <a class="collapse-item" href="register.html">Create</a>
+                            <h6 class="collapse-header">Manage Category</h6>
+                            <a class="collapse-item" href="#!/list-category">List</a>
                         </div>
                     </div>
                 </li>
@@ -130,12 +112,7 @@
                         <i class="fas fa-fw fa-folder"></i>
                         <span>User</span>
                     </a>
-                    <div
-                        id="User"
-                        class="collapse"
-                        aria-labelledby="headingPages"
-                        data-parent="#accordionSidebar"
-                    >
+                    <div id="User" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Manage User</h6>
                             <a class="collapse-item" href="#!/list-user">List</a>
@@ -155,15 +132,10 @@
                         <i class="fas fa-fw fa-folder"></i>
                         <span>Post</span>
                     </a>
-                    <div
-                        id="Post"
-                        class="collapse"
-                        aria-labelledby="headingPages"
-                        data-parent="#accordionSidebar"
-                    >
+                    <div id="Post" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Manage Post</h6>
-                            <a class="collapse-item" href="login.html">List</a>
+                            <a class="collapse-item" href="#!/list-post">List</a>
                             <a class="collapse-item" href="register.html">Create</a>
                         </div>
                     </div>
@@ -184,14 +156,9 @@
                 <!-- Main Content -->
                 <div id="content">
                     <!-- Topbar -->
-                    <nav
-                        class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
-                    >
+                    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
                         <!-- Sidebar Toggle (Topbar) -->
-                        <button
-                            id="sidebarToggleTop"
-                            class="btn btn-link d-md-none rounded-circle mr-3"
-                        >
+                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                             <i class="fa fa-bars"></i>
                         </button>
 
@@ -224,10 +191,7 @@
                                                 aria-describedby="basic-addon2"
                                             />
                                             <div class="input-group-append">
-                                                <button
-                                                    class="btn btn-primary"
-                                                    type="button"
-                                                >
+                                                <button class="btn btn-primary" type="button">
                                                     <i class="fas fa-search fa-sm"></i>
                                                 </button>
                                             </div>
@@ -245,10 +209,7 @@
                                     aria-haspopup="true"
                                     aria-expanded="false"
                                 >
-                                    <span
-                                        class="mr-2 d-none d-lg-inline text-gray-600 small"
-                                        >hduong</span
-                                    >
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">hduong</span>
                                     <img
                                         class="img-profile rounded-circle"
                                         src="../../static/templates/img/undraw_profile.svg"
@@ -259,34 +220,26 @@
                                     class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                     aria-labelledby="userDropdown"
                                 >
-                                    <a class="dropdown-item" href="#">
-                                        <i
-                                            class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"
-                                        ></i>
+                                    <a class="dropdown-item" href="#!/profile">
+                                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                         Profile
                                     </a>
                                     <a class="dropdown-item" href="#">
-                                        <i
-                                            class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"
-                                        ></i>
+                                        <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                         Settings
                                     </a>
                                     <a class="dropdown-item" href="#">
-                                        <i
-                                            class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"
-                                        ></i>
+                                        <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                         Activity Log
                                     </a>
                                     <div class="dropdown-divider"></div>
                                     <a
+                                        ng-controller="LogoutController"
                                         class="dropdown-item"
-                                        href="#"
-                                        data-toggle="modal"
-                                        data-target="#logoutModal"
+                                        href=""
+                                        ng-click="logOut()"
                                     >
-                                        <i
-                                            class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"
-                                        ></i>
+                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                         Logout
                                     </a>
                                 </div>
@@ -328,30 +281,14 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">
-                            Ready to Leave?
-                        </h5>
-                        <button
-                            class="close"
-                            type="button"
-                            data-dismiss="modal"
-                            aria-label="Close"
-                        >
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
-                    <div class="modal-body">
-                        Select "Logout" below if you are ready to end your current
-                        session.
-                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                     <div class="modal-footer">
-                        <button
-                            class="btn btn-secondary"
-                            type="button"
-                            data-dismiss="modal"
-                        >
-                            Cancel
-                        </button>
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                         <a class="btn btn-primary" href="login.html">Logout</a>
                     </div>
                 </div>

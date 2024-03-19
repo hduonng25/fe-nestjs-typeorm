@@ -1,30 +1,14 @@
-app.controller('UserController', function ($scope, $http) {
+app.controller('UserController', function ($scope, $http, parseJwt) {
     let token = localStorage.getItem('token');
     let headers = {
         'Content-Type': 'application/json',
         token: token,
     };
 
-    function parseJwt(token) {
-        let base64Url = token.split('.')[1];
-        let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-        let jsonPayload = decodeURIComponent(
-            atob(base64)
-                .split('')
-                .map(function (c) {
-                    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-                })
-                .join(''),
-        );
-
-        let payload = JSON.parse(jsonPayload);
-        return payload;
-    }
-
-    let decodedToken = parseJwt(token);
+    let payload = parseJwt.decodeToken(token);
 
     $http
-        .get('http://127.0.0.1:3009/api/v1/user/?page=1&size=2', {
+        .get('http://127.0.0.1:3009/api/v1/user/?page=1&size=20', {
             headers: headers,
         })
         .then(function (response) {
@@ -39,8 +23,7 @@ app.controller('UserController', function ($scope, $http) {
                 timer: 2000,
             }).then(function () {
                 setTimeout(function () {
-                    window.location.href =
-                        'http://127.0.0.1:5500/templates/admin/auth/login.html';
+                    window.location.href = 'http://127.0.0.1:5500/templates/admin/auth/login.html';
                 }, 2000);
             });
         });
@@ -81,7 +64,7 @@ app.controller('UserController', function ($scope, $http) {
 
     //TODO: Chuyen huong sang trang update
     $scope.updateUser = function (user) {
-        const check = decodedToken.roles.some((roles) => roles.includes('ADMIN'));
+        const check = payload.roles.some((roles) => roles.includes('ADMIN'));
         if (!check) {
             Swal.fire({
                 icon: 'warning',
@@ -112,8 +95,7 @@ app.controller('UserController', function ($scope, $http) {
                     timer: 2000,
                 }).then(function () {
                     setTimeout(function () {
-                        window.location.href =
-                            'http://127.0.0.1:5500/templates/admin/auth/login.html';
+                        window.location.href = 'http://127.0.0.1:5500/templates/admin/auth/login.html';
                     }, 2000);
                 });
             });
