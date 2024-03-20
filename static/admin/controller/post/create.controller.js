@@ -69,7 +69,7 @@ app.controller('CreatePostController', function ($scope, $http, parseJwt) {
                 window.location.href = '#!/list-post';
             })
             .catch(function (error) {
-                console.log(error.data.message);
+                console.log(error.data);
             });
     };
 });
