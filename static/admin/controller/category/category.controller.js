@@ -12,7 +12,7 @@ app.controller('CategoryController', function ($scope, $http, parseJwt) {
             headers: headers,
         })
         .then(function (response) {
-            const list_category = response.data.data.result;
+            const list_category = response.data.result;
             $scope.list_category = list_category;
         })
         .catch(function (error) {
@@ -62,13 +62,13 @@ app.controller('CategoryController', function ($scope, $http, parseJwt) {
                                     headers: headers,
                                 })
                                 .then(function (response) {
-                                    const list_category = response.data.data.result;
+                                    const list_category = response.data.result;
                                     $scope.list_category = list_category;
                                 });
                         })
                         .catch(function (error) {
                             if (error.status === 400) {
-                                const errorMessage = error.data.message;
+                                const errorMessage = error.data.description.en;
                                 Swal.fire({
                                     icon: 'error',
                                     title: errorMessage + '',
@@ -76,7 +76,12 @@ app.controller('CategoryController', function ($scope, $http, parseJwt) {
                                     timer: 2000,
                                 });
                             } else {
-                                console.error(error);
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Invalid server',
+                                    showConfirmButton: false,
+                                    timer: 2000,
+                                });
                             }
                         });
                 }
@@ -108,7 +113,7 @@ app.controller('CategoryController', function ($scope, $http, parseJwt) {
                                 headers: headers,
                             })
                             .then(function (response) {
-                                const list_category = response.data.data.result;
+                                const list_category = response.data.result;
                                 $scope.list_category = list_category;
                             });
                     });
@@ -152,7 +157,7 @@ app.controller('CategoryController', function ($scope, $http, parseJwt) {
                                     headers: headers,
                                 })
                                 .then(function (response) {
-                                    const list_category = response.data.data.result;
+                                    const list_category = response.data.result;
                                     $scope.list_category = list_category;
                                 });
                         })

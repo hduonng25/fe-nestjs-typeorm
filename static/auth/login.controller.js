@@ -17,11 +17,8 @@ app.controller('LoginController', function ($scope, $http) {
         $http
             .post('http://127.0.0.1:3009/api/v1/auth/login', data, config)
             .then(function (response) {
-                console.log(response.data.data.access_token);
-
-                localStorage.setItem('token', response.data.data.access_token);
+                localStorage.setItem('token', response.data.access_token);
                 let token = localStorage.getItem('token');
-                console.log(token);
 
                 function parseJwt(token) {
                     let base64Url = token.split('.')[1];
@@ -40,7 +37,6 @@ app.controller('LoginController', function ($scope, $http) {
                 }
 
                 let decodedToken = parseJwt(token);
-                console.log(decodedToken.roles);
 
                 if (
                     decodedToken.roles.some((role) => role.includes('ADMIN')) ||
@@ -62,9 +58,10 @@ app.controller('LoginController', function ($scope, $http) {
                         sessionStorage.setItem('isConfirmed', true);
                     });
                 } else {
+                    console.log(error);
                     Swal.fire({
                         icon: 'warning',
-                        title: error.data.mess,
+                        title: error.data.message,
                         showConfirmButton: false,
                         timer: 2000,
                     }).then(function () {

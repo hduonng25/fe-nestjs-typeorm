@@ -32,7 +32,7 @@ app.controller('CreateUserController', function ($scope, $routeParams, $http) {
                     .catch(function (error) {
                         Swal.fire({
                             icon: 'error',
-                            title: message[0],
+                            title: error.data.errors[0].message,
                             showConfirmButton: false,
                             timer: 2000,
                         });

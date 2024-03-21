@@ -12,7 +12,7 @@ app.controller('UserController', function ($scope, $http, parseJwt) {
             headers: headers,
         })
         .then(function (response) {
-            const listUser = response.data.data.result;
+            const listUser = response.data.result;
             $scope.listUser = listUser;
         })
         .catch(function (error) {
@@ -30,6 +30,16 @@ app.controller('UserController', function ($scope, $http, parseJwt) {
 
     //TODO: Delete user
     $scope.deleted = function (user) {
+        const check = payload.roles.some((roles) => roles.includes('ADMIN'));
+        if (!check) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'You do not have permission to operate',
+                showConfirmButton: false,
+                timer: 2000,
+            });
+            return;
+        }
         const ids = [];
         ids.push(user.id);
 
@@ -53,7 +63,7 @@ app.controller('UserController', function ($scope, $http, parseJwt) {
                                 headers: headers,
                             })
                             .then(function (response) {
-                                const listUser = response.data.data.result;
+                                const listUser = response.data.result;
                                 $scope.listUser = listUser;
                             });
                     });
@@ -84,7 +94,7 @@ app.controller('UserController', function ($scope, $http, parseJwt) {
                 headers: headers,
             })
             .then(function (response) {
-                const listUser = response.data.data.result;
+                const listUser = response.data.result;
                 $scope.listUser = listUser;
             })
             .catch(function (error) {

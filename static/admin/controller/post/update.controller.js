@@ -36,7 +36,7 @@ app.controller('UpdatePostController', function ($scope, $http, $routeParams, pa
             headers: headers,
         })
         .then(function (response) {
-            const list_category = response.data.data.result;
+            const list_category = response.data.result;
             $scope.list_category = list_category;
         })
         .catch(function (error) {

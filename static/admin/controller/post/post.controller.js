@@ -12,7 +12,7 @@ app.controller('PostController', function ($scope, $http, parseJwt) {
             headers: headers,
         })
         .then(function (response) {
-            const list_post = response.data.data.result;
+            const list_post = response.data.result;
             $scope.list_post = list_post;
         })
         .catch(function (error) {
@@ -54,7 +54,7 @@ app.controller('PostController', function ($scope, $http, parseJwt) {
                             })
                             .then(function (response) {
                                 Swal.fire('Deleted successfuly!', '', 'success');
-                                const list_post = response.data.data.result;
+                                const list_post = response.data.result;
                                 $scope.list_post = list_post;
                             });
                     })
